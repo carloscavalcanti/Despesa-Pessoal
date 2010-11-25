@@ -8,4 +8,8 @@ class Movimento < ActiveRecord::Base
   def retornaValorCredito
     @total = Movimento.sum(:valor, :conditions => {:tipo_id => Tipo.where("tipo ='C'") } )
   end
+  
+  def retornaQtdeMov
+    @total = Movimento.count(:id)
+  end
 end
