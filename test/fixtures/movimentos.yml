@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tipo: 
+  valor: 1.5
+  obs: MyText
+  data: 2010-11-16
+
+two:
+  tipo: 
+  valor: 1.5
+  obs: MyText
+  data: 2010-11-16

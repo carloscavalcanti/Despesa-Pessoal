@@ -1,0 +1,40 @@
+<h1>Lista de Movimentos</h1>
+
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Valor</th>
+    <th>Obs</th>
+    <th>Data</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movimentos.each do |movimento| %>
+  <% tipo = Tipo.find(:first, :select => 'descricao, tipo', :conditions=>['id=?', movimento.tipo_id]) %>   
+<% if tipo.tipo == "C" %>
+  <tr bgcolor=blue>
+<% end %>
+<% if tipo.tipo == "D" %>
+  <tr bgcolor=red>		
+<% end %>
+    
+    <td><font color="#FFFFFF"><%= tipo.descricao %> </font></td>
+    <td><font color="#FFFFFF"><%= movimento.valor %></font></td>
+    <td><font color="#FFFFFF"><%= movimento.obs %></font></td>
+    <td><font color="#FFFFFF"><%= movimento.data %></font>   <font color="white"></font> </td>
+    <td><%= link_to 'Mostrar', movimento %></td>
+    <td><%= link_to 'Editar', edit_movimento_path(movimento) %></td>
+    <td><%= link_to 'Apagar', movimento, :confirm => 'Você tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<% m = Movimento.new %>
+Valor Credito: <%= m.retornaValorCredito %><br />
+Valor Debito: <%= m.retornaValorDebito %>
+<br />
+<br /><br />
+
+<%= link_to 'Novo Movimento', new_movimento_path %><br />
+<%= link_to 'Voltar', "/" %>

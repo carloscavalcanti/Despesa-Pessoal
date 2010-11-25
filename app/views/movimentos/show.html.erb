@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <% tipo = Tipo.find(:first, :select => 'descricao, tipo', :conditions=>['id=?', @movimento.tipo_id]) %>
+  <%= tipo.tipo %> - <%= tipo.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @movimento.valor %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%= @movimento.obs %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @movimento.data %>
+</p>
+
+
+<%= link_to 'Editar', edit_movimento_path(@movimento) %> |
+<%= link_to 'Voltar', movimentos_path %>

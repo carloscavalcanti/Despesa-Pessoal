@@ -1,0 +1,34 @@
+<%= form_for(@movimento) do |f| %>
+  <% if @movimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movimento.errors.count, "error") %> prohibited this movimento from being saved:</h2>
+
+      <ul>
+      <% @movimento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<label for="despesa_tipo">Tipo</label><br/>
+	<%= collection_select(:movimento, :tipo_id, Tipo.all, :id, :descricao ) %>
+	
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br />
+    <%= f.text_field :valor %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br />
+    <%= f.text_area :obs %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
